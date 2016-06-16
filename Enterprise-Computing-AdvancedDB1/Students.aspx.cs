@@ -38,7 +38,7 @@ namespace Enterprise_Computing_AdvancedDB1
         protected void GetStudents()
         {
             // Connect to EF
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 string SortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
@@ -70,7 +70,7 @@ namespace Enterprise_Computing_AdvancedDB1
             int StudentID = Convert.ToInt32(StudentsGridView.DataKeys[selectedRow].Values["StudentID"]);
 
             // Use EF to find the selected student in the DB and remove it
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // Create object of the Student class and store the query string inside of it
                 Student deletedStudent = (from studentRecords in db.Students

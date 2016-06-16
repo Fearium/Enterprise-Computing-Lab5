@@ -27,7 +27,7 @@ namespace Enterprise_Computing_AdvancedDB1
             int StudentID = Convert.ToInt32(Request.QueryString["StudentID"]);
 
             // Connect to the EF DB
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // Populate a student object instance with the StudentId from the URL parameter
                 Student updatedStudent = (from student in db.Students
@@ -53,7 +53,7 @@ namespace Enterprise_Computing_AdvancedDB1
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
-            using (DefaultConnection db = new DefaultConnection())
+            using (ContosoConnection db = new ContosoConnection())
             {
                 // Use the Student model to create a new student object and save a new record
                 Student newStudent = new Student();
