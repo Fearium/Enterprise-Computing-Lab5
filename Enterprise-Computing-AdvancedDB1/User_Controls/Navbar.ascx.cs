@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+// Required for Identity and OWIN Security
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+
 /**
  * @author: Jesse Baril
  * @date: June 2nd, 2016
@@ -17,7 +22,27 @@ namespace Enterprise_Computing_AdvancedDB1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetActivePage();
+            if (!IsPostBack)
+            {
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    ContosoPlaceHolder.Visible = true;
+                    PublicPlaceHolder.Visible = false;
+
+                    if(HttpContext.Current.User.Identity.GetUserName() == "admin")
+                    {
+                        UserPlaceHolder.Visible = true;
+                    }
+                }
+                else
+                {
+                    ContosoPlaceHolder.Visible = false;
+                    PublicPlaceHolder.Visible = true;
+                    UserPlaceHolder.Visible = false;
+                }
+                SetActivePage();
+            }
+            
         }
 
         /**
@@ -58,6 +83,9 @@ namespace Enterprise_Computing_AdvancedDB1
                     break;
                 case "Logout":
                     logout.Attributes.Add("class", "active");
+                    break;
+                case "Users":
+                    users.Attributes.Add("class", "active");
                     break;
             }
         }

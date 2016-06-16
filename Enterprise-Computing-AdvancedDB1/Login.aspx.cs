@@ -39,7 +39,7 @@ namespace Enterprise_Computing_AdvancedDB1
                 authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, userIdentity);
 
                 // Redirect to the Main Menu Page
-                Response.Redirect("~/MainMenu.aspx");
+                Response.Redirect("/Contoso/MainMenu.aspx");
             }
             else
             {
