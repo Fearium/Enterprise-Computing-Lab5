@@ -47,6 +47,18 @@ namespace Enterprise_Computing_AdvancedDB1
                 case "Contact":
                     contact.Attributes.Add("class", "active");
                     break;
+                case "Login":
+                    login.Attributes.Add("class", "active");
+                    break;
+                case "Register":
+                    register.Attributes.Add("class", "active");
+                    break;
+                case "Contoso Menu":
+                    menu.Attributes.Add("class", "active");
+                    break;
+                case "Logout":
+                    logout.Attributes.Add("class", "active");
+                    break;
             }
         }
     }
